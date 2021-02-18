@@ -1,5 +1,5 @@
 /*
-on va mettre en place un écouteur d'évènement sur le formulaire. On pourra saisir un message dans le formulaire. En soumettant le formulaire, cela déclenche fonction1(). Fonction1() va "bloquer" le processus et intercepter les données entrées dans le formulaire. On affichera alors cette donnée dans une liste du DOM.
+on va mettre en place un écouteur d'évènement sur le formulaire. On pourra saisir un message dans le formulaire. En soumettant le formulaire, cela déclenche fonction1(). Fonction1() va "bloquer" le processus et intercepter les données entrées dans le formulaire. on va multiplier les données du formulaire par 12 et les retourner dans la balise .target.
 */
 
 // on sélectionne la balise du formulaire
@@ -23,17 +23,19 @@ function fonction1(event) {
     let message = inputElement.value;
     console.log(message);
 
-    // (3) on créé un élément <li>
-    let listElement = document.createElement('li');
+    // (3) on va préparer le résultat
+    let result
+    if (isNaN(parseFloat(message))) {
+        console.error("données invalides");
+    } else {
+    result = parseFloat(message) * 12;
+    }
 
-    // (4) on insère "message" dans la <li>
-    listElement.innerText = message;
+    // (4) on va sélectionner .target
+    let resultElement = document.querySelector('.target');
 
-    // (5) on sélectionne la balise <ul>
-    let ulElement = document.querySelector('ul');
-
-    // (6) on insère <li> dans <ul>
-    ulElement.appendChild(listElement);
+    // (6) on insère le résultat dans la balise .target
+    resultElement.innerText = result;
 
     // (7) on remet le input à 0 après traitement
     //inputElement.value = '';
