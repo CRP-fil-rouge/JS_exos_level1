@@ -13,19 +13,20 @@ buttonElement.addEventListener('click', fonction1)
 
 
 function fonction1() {
+
     //todo on créé la balise <p> avec createElement()
     let paragrapheElement = document.createElement('p');
     console.log(paragrapheElement);
 
     //todo on y ajoute le texte voulu
-    paragrapheElement.innerHTML = "<h1>ceci est un paragraphe.</h1>"
+    paragrapheElement.innerHTML = "ceci est un paragraphe."
 
     //todo on sélectionne l'endroit où la placer
-    targetElement = document.querySelector('.target');
+    let targetElement = document.querySelector('.target');
 
     //todo on place la balise créée à l'endroit sélectionné avec appendChild()
     targetElement.appendChild(paragrapheElement);
 
-
 }
+
 
