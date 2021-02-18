@@ -7,7 +7,7 @@ let formElement = document.querySelector('form');
 
 
 // on place un écouteur d'évènements sur cette balise avec addEventListener(). Cet écouteur déclenchera la fonction1() lorsque l'on soumettra le formulaire en cliquant sur le bouton "ok" (évènement 'submit')
-formElement.addEventListener('input', fonction1);
+formElement.addEventListener('submit', fonction1);
 
 
 //! fonction1() doit prendre un argument "event" (on peut choisir un autre nom)
@@ -38,7 +38,7 @@ function fonction1(event) {
     resultElement.innerText = result;
 
     // (7) on remet le input à 0 après traitement
-    //inputElement.value = '';
+    inputElement.value = '';
 }
 
 
