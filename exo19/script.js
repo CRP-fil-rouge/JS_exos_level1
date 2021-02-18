@@ -2,12 +2,12 @@
 on va mettre en place un écouteur d'évènement sur le formulaire. On pourra saisir un message dans le formulaire. En soumettant le formulaire, cela déclenche fonction1(). Fonction1() va "bloquer" le processus et intercepter les données entrées dans le formulaire. On affichera alors cette donnée dans une liste du DOM.
 */
 
-// todo on sélectionne la balise du formulaire
+// on sélectionne la balise du formulaire
+let formElement = document.querySelector('form');
 
 
-
-//todo on place un écouteur d'évènements sur cette balise avec addEventListener(). Cet écouteur déclenchera la fonction1() lorsque l'on soumettra le formulaire en cliquant sur le bouton "ok"
-
+// on place un écouteur d'évènements sur cette balise avec addEventListener(). Cet écouteur déclenchera la fonction1() lorsque l'on soumettra le formulaire en cliquant sur le bouton "ok" (évènement 'submit')
+formElement.addEventListener('submit', fonction1);
 
 
 //! fonction1() doit prendre un argument "event" (on peut choisir un autre nom)
@@ -16,23 +16,27 @@ function fonction1(event) {
     //! on commence par bloquer le processus de traitement du formulaire
     event.preventDefault();
 
-    //todo on récupère l'élément <input>
+    // (1) on récupère l'élément <input>
+    let inputElement = document.querySelector('#input1');
 
+    // (2) on récupère la donnée dans le formulaire dans une variable "message"
+    let message = inputElement.value;
+    console.log(message);
 
-    //todo on récupère la donnée dans le formulaire dans une variable "message"
+    // (3) on créé un élément <li>
+    let listElement = document.createElement('li');
 
+    // (4) on insère "message" dans la <li>
+    listElement.innerText = message;
 
-    //todo on créé un élément <li>
+    // (5) on sélectionne la balise <ul>
+    let ulElement = document.querySelector('ul');
 
+    // (6) on insère <li> dans <ul>
+    ulElement.appendChild(listElement);
 
-    //todo on insère "message" dans la <li>
-
-
-    //todo on sélectionne la balise <ul>
-
-    
-    //todo on insère <li> dans <ul>
-
+    // (7) on remet le input à 0 après traitement
+    inputElement.value = '';
 }
 
 
